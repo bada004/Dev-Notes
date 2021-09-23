@@ -1,0 +1,26 @@
+This removes the title from the modal window. 
+function spdialog(pageurl) { 
+var options =  
+{ 
+title:' ', 
+url:pageurl, 
+}; 
+SP.SOD.execute('sp.ui.dialog.js','SP.UI.ModalDialog.showModalDialog', options); 
+} 
+
+Refreshes the window on save 
+function spdialog(pageurl) { 
+            var options = { 
+                title:' ', 
+                url:pageurl, 
+                dialogReturnValueCallback: function(result){ 
+                if (result == SP.UI.DialogResult.OK) { 
+                    window.location.reload(); 
+                } 
+                if (result == SP.UI.DialogResult.cancel) { 
+                    //do nothing, modal was closed 
+                } 
+            } 
+                    }; 
+            SP.SOD.execute('sp.ui.dialog.js','SP.UI.ModalDialog.showModalDialog', options); 
+        } 
