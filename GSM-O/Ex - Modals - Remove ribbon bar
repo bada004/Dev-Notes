@@ -1,0 +1,9 @@
+In the code locate the tag <asp:Content ContentPlaceHolderId=”PlaceHolderAdditionalPageHead” runat=”server”> which is located near the bottom of the code. 
+Add the following CSS to the end of this tag: 
+
+<style type="text/css"> 
+    #s4-ribbonrow {display: none !important;} 
+</style> 
+
+So it looks like; 
+<asp:Content ContentPlaceHolderId=”PlaceHolderAdditionalPageHead” runat=”server”> <SharePoint:DelegateControl runat=”server” ControlId=”FormCustomRedirectControl” AllowMultipleControls=”true”/> <SharePoint:UIVersionedContent UIVersion=”4″ runat=”server”><ContentTemplate> <SharePoint:CssRegistration Name=”forms.css” runat=”server”/> </ContentTemplate></SharePoint:UIVersionedContent> <style type=”text/css”> #s4-ribbonrow {display: none !important;} </style> </asp:Content> 
