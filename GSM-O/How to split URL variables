@@ -1,0 +1,13 @@
+This will pull the URL parameters and split it by the backslash 
+    
+    var urlPathname = window.location.pathname; 
+    var pathArray = urlPathname.split('/'); 
+    var subsite = pathArray[3]; 
+    console.log("You are in the subsite for " + subsite); 
+
+Reference 
+  https://css-tricks.com/example/index.html?s=flexbox 
+    window.location.protocol = “http:” 
+    window.location.host = “css-tricks.com” 
+    window.location.pathname = “/example/index.html” 
+    window.location.search = “?s=flexbox” 
