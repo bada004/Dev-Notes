@@ -1,0 +1,16 @@
+<script type="text/javascript" src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/jquery.SPServices.min.js"></script> 
+$(document).ready(function(){ 
+$('.ms-dlgTitle', window.parent.document).hide(); 
+$('#Addressed').parent().parent().hide(); 
+$('#Title').parent().parent().hide(); 
+   $().SPServices({ 
+     operation: "GetGroupCollectionFromUser", 
+     userLoginName: $().SPServices.SPGetCurrentUser(), 
+     async: false, 
+     completefunc: function(xData, Status) { 
+        if (($(xData.responseXML).find("Group[Name='jfhq-dodin Owners']").length == 1)||($(xData.responseXML).find("Group[Name='J0 Members']").length == 1)||($(xData.responseXML).find("Group[Name='Dev Members']").length == 1)) { 
+          $('#manageCoSRoundtable').show(); 
+        } 
+      } 
+   }); 
+}); 
