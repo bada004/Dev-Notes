@@ -1,0 +1,8 @@
+Around a list: 
+The inline-block allows the code card to expand if the list is wide and causes a horizonal scroll bar. 
+
+<div class="card wider" style="display: inline-block;"> 
+  <div class="card-body"> 
+    [insert the web part zone here] 
+  </div> 
+</div> 
