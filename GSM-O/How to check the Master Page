@@ -1,0 +1,5 @@
+Add this to a browser url bar:
+  {site url}/_api/web?$select=CustomMasterUrl,MasterUrl 
+
+Reference
+  https://sharepoint.stackexchange.com/questions/198986/how-to-find-which-masterpage-we-are-using-in-sharepoint-2013-website/198991 
