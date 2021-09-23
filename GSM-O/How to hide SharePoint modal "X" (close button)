@@ -1,0 +1,2 @@
+var spButtons = jQuery('.ms-dlgTitleBtns', window.parent.document);   
+spButtons.find('a.ms-dlgCloseBtn').remove();  
