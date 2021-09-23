@@ -1,0 +1,52 @@
+<div class="row "> 
+      <div class="col-2 bd-sidebar"> 
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical"> 
+          <a class="nav-link active" id="v-pills-test1-tab" data-toggle="pill" href="#v-pills-test1" role="tab" aria-controls="v-pills-test1" aria-selected="true"> 
+            Current Week Vote Result</a> 
+          <a class="nav-link" id="v-pills-currentWeekNom-tab" data-toggle="pill" href="#v-pills-currentWeekNom" role="tab" aria-controls="v-pills-currentWeekNom" aria-selected="false"> 
+            Current Week Nominee</a> 
+         <!-- <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab" aria-controls="v-pills-3" aria-selected="false"> 
+            My Nomination History</a> 
+            <a class="nav-link" id="v-pills-4-tab" data-toggle="pill" href="#v-pills-4" role="tab" aria-controls="v-pills-4" aria-selected="false"> 
+            Past WoW Winners</a>--> 
+        </div> 
+      </div> 
+  
+    <div class="col-10"> 
+        <div class="tab-content" id="v-pills-tabContent"> 
+     
+    <!-- Current Week Vote Result Tab--> 
+        <div class="tab-pane fade show active" id="v-pills-test1" role="tabpanel" aria-labelledby="v-pills-test1-tab"> 
+            <h1 class="display-4 text-primary"> 
+                <!--<span style="float:right;"> 
+                    <span 0="Nomination submittions are only available Wednesday through Sunday"><button type="button" id="nomButton1" class="btn btn-default" onclick="javascript:spdialog('https://intelshare.intelink.gov/sites/jfhq-dodin/Lists/WoWList/NewFormNominee.aspx')"> 
+                Nominate a Candidate</button></span> 
+                    <span title="Voting is only avalible on Mondays"><button type="button" id="voteButton1" class="btn btn-default" onclick="javascript:spdialog('https://intelshare.intelink.gov/sites/jfhq-dodin/Lists/WoW_ListVote/NewForm.aspx')"> 
+                Vote</button></span> 
+                </span>--> 
+                Current Week Vote Result 
+                <span id="datePlug1"></span> 
+            </h1> 
+            <div class="card wider" style="display:inline-block"> 
+                <div class="card-body"> 
+            <WebPartPages:WebPartZone runat="server" FrameType="None" ID="Maintest1" Title="loc:Maintest1"><ZoneTemplate> 
+            </ZoneTemplate></WebPartPages:WebPartZone> 
+                </div> 
+            </div> 
+        </div> 
+         
+        <!-- Current Nominees Tab--> 
+        <div class="tab-pane fade" id="v-pills-currentWeekNom" role="tabpanel" aria-labelledby="v-pills-currentWeekNom-tab">         
+            <h1 class="display-4 text-primary"> 
+                Current Week Nominee 
+            </h1> 
+                <div class="card wider" style="display:inline-block"> 
+                    <div class="card-body"> 
+                <WebPartPages:WebPartZone runat="server" FrameType="None" ID="MaincurrentWeekNom" Title="loc:MaincurrentWeekNom"><ZoneTemplate> 
+                </ZoneTemplate></WebPartPages:WebPartZone> 
+                </div> 
+            </div> 
+        </div> 
+    </div> 
+  </div> 
+</div> 
