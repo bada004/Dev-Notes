@@ -1,0 +1,11 @@
+- JavaScript 
+window.onload = function() { 
+  alert('the page has loaded'); 
+} 
+
+ 
+
+- JQuery 
+$(document).ready(function () { 
+  // do something when the page loads 
+}); 
