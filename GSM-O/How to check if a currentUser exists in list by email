@@ -1,0 +1,39 @@
+// 3/23/21 - BLS - Check if the user is a CRO 
+// Used to find the current user's email and compare it agaist the CRO list's emails 
+// If the user is a CRO, enable the form fields. If the user is not, keep the fields grayed out.   
+
+function getUserDetails(emailArray) { 
+  var clientContext; 
+  var user; 
+  var userEmail; 
+
+  SP.SOD.executeFunc('sp.js', 'SP.ClientContext', sharePointReady); 
+
+  function sharePointReady() { 
+      clientContext = SP.ClientContext.get_current(); 
+      user = clientContext.get_web().get_currentUser();  
+      clientContext.load(user); 
+      clientContext.executeQueryAsync(onQuerySucceeded, onQueryFailed); 
+  } 
+  function onQuerySucceeded() { 
+  console.log(emailArray); 
+  userEmail = user.get_email(); 
+  if (emailArray.includes(userEmail)) { 
+      console.log('You are a CRO and everything should be enabled'); 
+        $(".disabled-submitted :input").prop('disabled', false); // Enable all the fields if the user is a CRO. 
+          $('.cro-only :input').attr('disabled', false);  
+          $('#saveEditsButton').hide(); // Hide the user's edit button    
+          console.log(userEmail + ' is an approved CRO'); 
+      } else {     
+      console.log('This is a NOT CRO and everything should be Closed'); 
+       $('.cro-only :input'). attr('disabled', true); 
+        $('#saveCROEditsButton').hide(); // Hide the CRO edit button 
+     } 
+      console.log('The email address of the current user is ' + user.get_email()); 
+      console.log('The account name is ' + user.get_loginName()); 
+  } 
+
+  function onQueryFailed(sender, args) { 
+      console.log('Error: ' + args.get_message()); 
+  } 
+} 
