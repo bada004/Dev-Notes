@@ -1,0 +1,5 @@
+<style> 
+#ms-dnd-dropbox { 
+  display:none !important;
+} 
+</style> 
