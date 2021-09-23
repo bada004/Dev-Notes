@@ -1,0 +1,12 @@
+Using a script editor webpart insert the code below 
+This will work if the jquery doesn't change the tab title. 
+
+document.title = "(2) New title"; 
+
+This will change the page title in SharePoint 
+document.getElementById('pageTitle').innerHTML = "IIOC Leaders Dashboard"; 
+
+<script> 
+$('head title').text('PCAR'); // Updates browser tab 
+$("#pageTitle").text("Perimeter Cybersecurity Analysis And Reporting (PCAR)"); // Updates Page Title 
+</script> 
