@@ -1,0 +1,5 @@
+Dev Master Page - https://intelshare.intelink.gov/sites/jfhqdodin/_api/web?$select=CustomMasterUrl,MasterUrl 
+
+Prod List at room https://intelshare.intelink.gov/sites/jfhqdodin/_api/web?$select=CustomMasterUrl,MasterUrl 
+
+https://intelshare.intelink.gov/sites/jfhq-dodin/J0/_api/web/lists/GetByTitle('Shared%20Documents')/items? 
