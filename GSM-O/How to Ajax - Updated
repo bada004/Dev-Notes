@@ -1,0 +1,22 @@
+https://howtodoinjava.com/jquery/jquery-ajax-tutorial/ 
+
+function validateInputValues() { 
+  $.ajax({ 
+      url: "/app-url/relative-url", 
+      type: "GET", 
+      headers: {"accept":  "application/json; odata=verbose" 
+      data: { 
+          name : "The name", 
+          desc : "The description" 
+      } 
+  }) 
+  .done (function(data, textStatus, jqXHR) {  
+      alert("Success: " + response);  
+  }) 
+  .fail (function(jqXHR, textStatus, errorThrown) {  
+      alert("Error");  
+  }) 
+  .always (function(jqXHROrData, textStatus, jqXHROrErrorThrown) {  
+      alert("complete");  
+  }); 
+} 
