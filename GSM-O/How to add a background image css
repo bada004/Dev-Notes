@@ -1,0 +1,9 @@
+.ms-core-overlay {  
+  background-color: #F5F5F5; 
+  background-image: url("https://intelshare.intelink.gov/sites/jfhq-dodin/J0/SitePages/pexels-photo-305821.jpeg"); 
+  background-repeat: no-repeat; 
+  background-attachment: fixed; 
+  background-size:cover; 
+  display:block; 
+  background-position: bottom; 
+} 
