@@ -1,0 +1,30 @@
+//hide first row 
+  $('#hdFirst').click(function(){ 
+$('#tblFirst').find('tbody tr:first').hide(); 
+  }); 
+  
+//hide last row 
+   $('#hdLast').click(function(){ 
+$('#tblFirst').find('tbody tr:last').hide(); 
+  }); 
+   
+//hide row at specifield index (index starts at 0) 
+  $('#hdAtIndex').click(function(){ 
+   $('#tblFirst').find('tbody tr:eq(2)').hide(); 
+  }); 
+   
+//hide even rows 
+  $('#hdEven').click(function(){ 
+   $('#tblFirst').find('tbody tr:even').hide(); 
+  }); 
+ 
+//hide odd rows   
+  $('#hdOdd').click(function(){ 
+   $('#tblFirst').find('tbody tr:odd').hide(); 
+  }); 
+   
+//hide table tbody 
+   $('#hdClearTh').click(function(){ 
+    $('#tblFirst').find('tbody').hide(); 
+   // $('#tblSix').find('tbody').remove(); 
+  }); 
