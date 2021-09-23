@@ -1,0 +1,38 @@
+<script src="/sites/jfhq-dodin/SiteAssets/jquery/jquery-3.3.1.min.js"></script> 
+ 
+<script> 
+  $(document).ready(function() { 
+    setLookupToSelect(); 
+    checkRequiredLookupValueSelectionToDisableButton(); 
+  }); 
+
+  function setLookupToSelect(){ 
+    // Add "Select as the default value for the lookup value 
+    // Select's value is set to a blank string instead of an integer as an extra precausion 
+    // so that the user can not save this option on accident.   
+    $("select[title|='Directorate Required Field']").prepend(new Option("Select", " ")); 
+    $("select option[value=' ']").prop("selected","true"); // Must use prop and true/false or this wont work in IE 
+  } 
+
+  function checkRequiredLookupValueSelectionToDisableButton() { 
+    // Check the selection value and if the its Select, disable all save buttons 
+    var directorateValue = $("select[title|='Directorate Required Field']").val(); 
+    if (directorateValue == ' ') { 
+      $("input[name*='idIOSaveItem']").attr("disabled","disabled"); 
+      document.getElementById("Ribbon.ListForm.Edit.Commit.Publish-Large").style.display="none"; 
+    }; 
+    // Add the change event handler to the directorates selection. 
+    // If the selection is anything other than "Select", unhide and remove the disable attribute. 
+    $("select[title|='Directorate Required Field']").on('change', function() { 
+      var value = $(this).val(); 
+      console.log(value); 
+      if (value != ' ') { 
+        $("input[name*='idIOSaveItem']").removeAttr("disabled"); 
+        document.getElementById("Ribbon.ListForm.Edit.Commit.Publish-Large").style.display=""; 
+      } else if (value == ' ') { 
+        $("input[name*='idIOSaveItem']").attr("disabled","disabled"); 
+        document.getElementById("Ribbon.ListForm.Edit.Commit.Publish-Large").style.display="none"; 
+      }; 
+  }); 
+  } 
+</script> 
