@@ -1,0 +1,19 @@
+// Get the CNO list and populate the dropdown column 
+ function getCroData(){ 
+        $.ajax({ 
+            url: "https://intelshare.intelink.gov/sites/jfhq-dodin/J9/_api/web/lists/GetByTitle('Capability Requirements Officers')/items?$filter=(Remove_x0020_CNO_x0020_Access eq false)", 
+            type: "GET", 
+            headers: {"accept":  "application/json; odata=verbose" 
+        }, 
+        success: function(data){ 
+               var croData = data.d.results; 
+               for(i=0; i < croData.length; i++){ 
+               var croId = croData[i].ID; 
+var croName = croData[i].Full_x0020_Name; 
+html=''; 
+html += '<option id="' + croId + '" value="' + croId + '">' + croName  + '</option>';  
+$('#formCroName').append(html); 
+} 
+        } 
+    }) 
+} 
