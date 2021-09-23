@@ -1,0 +1,7 @@
+This was used to give a default value to a date field. But setting a date of the coming Friday.
+
+1. Create a Date and Time column on a SharePoint list
+2. Under Additional Column Settings, choose "Calculated Value"
+3. Enter the code snip below to complete the task on line one of this file.
+
+=IF(WEEKDAY(Today)=0,Today+6,IF(WEEKDAY(Today)=1,Today+5,IF(WEEKDAY(Today)=2,Today+4,IF(WEEKDAY(Today)=3,Today+3,IF(WEEKDAY(Today)=4,Today+2,IF(WEEKDAY(Today)=5,Today+1,IF(WEEKDAY(Today)=6,Today+0))))))) 
