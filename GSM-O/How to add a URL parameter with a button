@@ -1,0 +1,1 @@
+<button  onclick="window.history.replaceState(null, null, `?tab=3`)" type="button" class="btn btn-primary">test</button> 
