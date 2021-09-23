@@ -1,0 +1,22 @@
+Open a Modal 
+<button type="button" title="Submit a question to the CoS Roundtable"  data-dismiss="modal" aria-label="Close" class="btn btn-primary" onclick="javascript:spdialog('https://intelshare.intelink.gov/sites/jfhq-dodin/J0/Lists/CoS%20Roundtable%20Questions/NewForm.aspx')">Submit a Question</button> 
+
+Open a Link 
+<button onclick="window.location.href='/sites/jfhq-dodin/J0/Lists/CoS%20Roundtable%20Questions/Questions.aspx'" type="button" class="btn btn-primary">View Submitted Questions</button> 
+
+Open a link but hide the button 
+<button id="manageCoSRoundtable" onclick="window.location.href='/sites/jfhq-dodin/J0/Lists/CoS%20Roundtable%20Questions/AllItems.aspx'" type="button" class="btn btn-primary" style="display:none;">Manage Questions</button> 
+
+Code that checks permissions and unhides the button 
+$(document).ready(function(){ 
+   $().SPServices({ 
+     operation: "GetGroupCollectionFromUser", 
+     userLoginName: $().SPServices.SPGetCurrentUser(), 
+     async: false, 
+     completefunc: function(xData, Status) { 
+        if (($(xData.responseXML).find("Group[Name='jfhq-dodin Owners']").length == 1)||($(xData.responseXML).find("Group[Name='J0 Members']").length == 1)||($(xData.responseXML).find("Group[Name='Dev Members']").length == 1)) { 
+$('#manageCoSRoundtable').show(); 
+        } 
+      } 
+   }); 
+}); 
