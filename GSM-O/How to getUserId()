@@ -1,0 +1,15 @@
+// Get user's Id and return it to the function it is being called from
+
+		function checkUserId() {
+			$().SPServices({
+				operation: "GetUserInfo",
+				userLoginName: $().SPServices.SPGetCurrentUser(),
+				async: false,
+				completefunc: function (xData, Status) {
+					$(xData.responseXML).find("User").each(function () {
+						curUserId = $(this).attr("ID");
+					});
+					return curUserId;
+				}
+			});
+		}
