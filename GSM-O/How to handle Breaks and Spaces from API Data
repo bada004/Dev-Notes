@@ -1,0 +1,3 @@
+if (drillData[i].Participants != null){
+				var forumParticipants = drillData[i].Participants.replace(/\n/g, "<br />");
+			}
