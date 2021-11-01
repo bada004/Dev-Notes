@@ -1,0 +1,8 @@
+// To do a date: 
+let today = new Date();
+// Setting the date back one day because the ETC field is a date only field. SharePoint saves this to midnight ZULU time be default.
+// Causing my timing to appear off. Subtracting one day fixes this. bls - 11/1/2021
+today.setDate(today.getDate() - 1);
+
+//The line below goes in the ajax call
+url: "/_api/web/lists/GetByTitle('IMOs')/items?$filter=((IMOType ne 'N/A') and (TPDPRep eq 'CDR') and (ETC ge datetime'" + today.toISOString() + "'))&$orderby=ETC asc",
