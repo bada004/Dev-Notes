@@ -1,0 +1,3 @@
+How to add a custom attachment button to a SharePoint library form (New, Edit) while using the out-of-the-box SharePoint attachfile function
+
+<button type="button" value="Attach File" class="btn btn-sm btn-primary" onclick="javascript:UploadAttachment()">Attach File<button>
