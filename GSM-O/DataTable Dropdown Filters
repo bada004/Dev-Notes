@@ -1,0 +1,111 @@
+HOW TO ADD DROPDOWN FILTERS TO DATATABLES
+
+<table id="FDODash" class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">FDO ID</th>
+            <th scope="col">Request Title</th>
+            <th scope="col">Requestor-Name</th>
+            <th scope="col">Purpose</th>
+            <th scope="col">Status</th>
+            <th scope="col">Suspense Date</th>
+            <th scope="col">Classification</th>
+            <th scope="col">Justification</th>
+            <th scope="col">Benefit to US</th>
+            <th scope="col">Subject Country</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<script type="text/javascript">
+
+    var myFdoRequestDataSet = [];
+    function getMyRequestData() {
+        checkUserId();
+        $.ajax({
+            url: "https://intelshare.intelink.gov/sites/jfhq-dodin/J2/_api/web/lists/GetByTitle('FDMS')/items?$filter=Author eq " + curUserId,
+            type: "GET",
+            headers: {
+                "accept": "application/json; odata=verbose"
+            },
+            success: function (data) {
+                var myRequestData = data.d.results;
+                for (i = 0; i < myRequestData.length; i++) {
+                    var myRequestId = myRequestData[i].Id;
+                    var myRequestRequestorName = myRequestData[i].Requestor_x002d_Name;
+                    var myRequestTitle = myRequestData[i].Title;
+                    var myRequestPurpose = myRequestData[i].Purpose;
+                    var myRequestStatus = myRequestData[i].Status;
+                    var myRequestCreatedBy = myRequestData[i].AuthorId;
+                    var myRequestSuspenseDate = myRequestData[i].Suspense_x002d_Date;
+                    var myRequestClassification = myRequestData[i].Classification;
+                    var myRequestJustification = myRequestData[i].Justification;
+                    var myRequestBenefitToUs = myRequestData[i].Benefit_x002d_To_x002d_US;
+                    var myRequestSubjectCountry = myRequestData[i].Subject_x0020_Country;
+
+                    var dataItem = {};
+                    dataItem.Id = myRequestId;
+                    dataItem.RequestorName = myRequestRequestorName;
+                    dataItem.Title = "<a class='text-primary' href='https://intelshare.intelink.gov/sites/jfhq-dodin/J2/Lists/FDMS/EditForm2.aspx?ID=" + myRequestId + "&Source=https://intelshare.intelink.gov/sites/jfhq-dodin/J2/SitePages/FDO_MyRequests.aspx'>" + myRequestTitle + "</a>";
+                    dataItem.Purpose = myRequestPurpose;
+                    dataItem.Status = myRequestStatus;
+                    dataItem.SuspenseDate = myRequestSuspenseDate;
+                    dataItem.Classification = myRequestClassification;
+                    dataItem.Justification = myRequestJustification;
+                    dataItem.BenefitToUs = myRequestBenefitToUs;
+                    dataItem.SubjectCountry = myRequestSubjectCountry;
+
+                    myFdoRequestDataSet.push(dataItem);
+                }
+
+                $('#FDODash').DataTable({
+                    destroy: true,      //allows reinitialization if necessary
+                    data: myFdoRequestDataSet,
+                    order: [[0, "desc"]],
+                    columns: [
+                        { title: "FDO ID", data: "Id" },
+                        { title: "Request Title", data: "Title" },
+                        { title: "Requestor-Name", data: "RequestorName" },
+                        { title: "Purpose", data: "Purpose" },
+                        { title: "Status", data: "Status" },
+                        { title: "Suspense Date", data: "SuspenseDate" },
+                        { title: "Classification", data: "Classification" },
+                        { title: "Justification", data: "Justification" },
+                        { title: "Benefit to US", data: "BenefitToUs" },
+                        { title: "Subject Country", data: "SubjectCountry" }
+                    ],
+                    columnDefs: [{ "visible": true, "targets": 0 },
+                    { "targets": 1 },
+                    { "targets": 2 },
+                    { "targets": 3 }
+                    ],
+                    initComplete: function () {
+                        this.api().columns().every(function () {
+                            var column = this;
+                            var select = $('<select style="width:100%"><option value=""></option></select>')
+                                .appendTo($(column.header()))
+                                .on('change', function () {
+                                    var val = $.fn.dataTable.util.escapeRegex(
+                                        $(this).val()
+                                    );
+
+                                    column
+                                        .search(val ? '^' + val + '$' : '', true, false)
+                                        .draw();
+                                });
+
+                            column.data().unique().sort().each(function (d, j) {
+                                var val = $('<div/>').html(d).text();
+                                select.append('<option value="' + val + '">' + val + '</option>');
+                            });
+                        });
+                    }
+
+                });
+
+            }
+        });
+    }
+</script>
