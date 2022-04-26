@@ -36,7 +36,7 @@ SharePoint Specific Imports
 <script src="/_layouts/sp.core.js" type="text/javascript"></script> 
 <script src="/_layouts/15/sp.runtime.js" type="text/javascript"></script> 
 <script src="/_layouts/15/sp.js" type="text/javascript"></script> 
-<!--<script src="/_layouts/sp.ribbon.js" type="text/javascript"></script>-->d 
+<!--<script src="/_layouts/sp.ribbon.js" type="text/javascript"></script>-- 
 
 SharePoint Specific Imports 
 <link href="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/MDB-Free_4.13.0/css/bootstrap.min.css" rel="stylesheet"></link> 
