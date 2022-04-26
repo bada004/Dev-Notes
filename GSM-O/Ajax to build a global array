@@ -1,0 +1,39 @@
+// Get the data from the AO list
+// Use the data to create json (dataItem)
+// Add the json object (dataItem) to the array (arrayOfAos) for use
+
+        
+        var arrayOfAos = [];
+        function getAoData() {
+            $.ajax({
+                url: "https://intelshare.intelink.gov/sites/jfhq-dodin/_api/web/lists/GetByTitle('AO')/items?",
+                type: "GET",
+                headers: {
+                    "accept": "application/json; odata=verbose"
+                },
+                data: {
+                    name: "AOs",
+                    desc: "The DAOs"
+                }
+            })
+                .done(function (data, textStatus, jqXHR) {
+                    for (var i = 0; i < data.d.results.length; i++) {
+                        var items = data.d.results[i];
+
+                        var dataItem = {};
+                        dataItem.Id = items.Id;
+                        dataItem.Title = items.Title;
+                        dataItem.AO = items.AO;
+                        dataItem.AOType = items.deev;
+                        dataItem.DAOType = items.DAOType;
+
+                        arrayOfAos.push(dataItem);
+                    }
+                })
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    alert("Unable to retrieve data. Please contact the KM SharePoint Team.");
+                })
+                .always(function (jqXHROrData, textStatus, jqXHROrErrorThrown) {
+                    // alert("complete");
+                });
+        }
