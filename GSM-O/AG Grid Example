@@ -1,0 +1,124 @@
+<!-- https://intelshare.intelink.gov/sites/jfhq-dodin/BADSS/SitePages/aggridtest.html-->
+
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/AG-Grid/ag-grid-enterprise.min.noStyle.js"></script>
+    <link rel="stylesheet" href="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/AG-Grid/ag-grid.css">
+    <link rel="stylesheet" href="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/AG-Grid/ag-theme-alpine.css">
+
+    <link href="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/MDB-Free_4.13.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/MDB-Free_4.13.0/css/mdb.min.css" rel="stylesheet">
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/jquery/jquery-3.3.1.min.js"></script>
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/Frameworks/jquery.min.js"></script>
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/Frameworks/bootstrap.min.js"></script>
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/MDB-Free_4.13.0/js/mdb.min.js"></script>
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/moment.js"></script>
+    <script type="text/javascript" src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/jquery.SPServices.min.js"></script>
+    <script type="text/javascript" src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/SPDialog.js"></script>
+    <script src="/_layouts/MicrosoftAjax.js" type="text/javascript"></script>
+    <script src="/_layouts/1033/init.js" type="text/javascript"></script>
+    <script src="/_layouts/1033/core.js" type="text/javascript"></script>
+    <script src="/_layouts/sp.core.js" type="text/javascript"></script>
+    <script src="/_layouts/15/sp.runtime.js" type="text/javascript"></script>
+    <script src="/_layouts/15/sp.js" type="text/javascript"></script>
+
+    <title>bls's AG Grid Test Page</title>
+
+</head>
+
+<body>
+    <h1>bls's AG Grid Test Page</h1>
+
+    <div id="myGrid" class="ag-theme-alpine" style="height: 600px; width:80%"></div>
+    <button class="btn btn-primary btn-sm" onclick="onAddRow()">Add row</button>
+
+    <script type="text/javascript" charset="utf-8">
+
+        function onAddRow() {
+            var rowDataItem = createNewRowData();
+            gridOptions.api.applyTransaction({ add: [rowDataItem] });
+        }
+
+        function createNewRowData() {
+            var newData = {
+                Id: "new",
+                Title: null,
+                PC: null,
+                AO: null,
+                CT: null,
+            };
+            return newData;
+        }
+
+
+        // specify the columns
+        const columnDefs = [
+            { field: "Id", sortable: true, filter: true, resizable: true, checkboxSelection: true, editable: true, hide: true },
+            { field: "Title", sortable: true, filter: true, resizable: true, editable: true },
+            { field: "PC", sortable: true, filter: true, resizable: true, editable: true },
+            { field: "AO", sortable: true, filter: true, editable: true, resizable: true, cellEditor: 'agRichSelectCellEditor', cellEditorParams: { values: ['Red', 'Blue', 'Green'] }, },
+            { field: "CT", sortable: true, filter: true, resizable: true, editable: true, cellEditorPopup: true, cellEditor: 'agLargeTextCellEditor' }
+        ];
+
+        // // specify the data
+        // const rowData = [
+        //     { make: "Toyota", model: "Celica", price: 35000 },
+        //     { make: "Ford", model: "Mondeo", price: 32000 },
+        //     { make: "Porsche", model: "Boxster", price: 72000 }
+        // ];
+
+        // let the grid know which columns to use
+        const gridOptions = {
+            columnDefs: columnDefs,
+            rowSelection: 'multiple'
+        };
+
+        // lookup the container we want the Grid to use
+        const eGridDiv = document.querySelector('#myGrid');
+
+        // create the grid passing in the div to use together with the columns & data we want to use
+        new agGrid.Grid(eGridDiv, gridOptions);
+
+        $(document).ready(function () {
+            getData();
+        });
+
+        var arrayOfData = [];
+        function getData() {
+            $.ajax({
+                url: "https://intelshare.intelink.gov/sites/jfhq-dodin/dev/_api/web/lists/GetByTitle('bls test')/items?$select= *, AO/Title&$expand=AO",
+                type: "GET",
+                headers: {
+                    "accept": "application/json; odata=verbose"
+                },
+                data: {
+                    name: "blstest",
+                    desc: "test"
+                }
+            })
+                .done(function (data, textStatus, jqXHR) {
+                    for (var i = 0; i < data.d.results.length; i++) {
+                        var items = data.d.results[i];
+
+                        var dataItem = {};
+                        dataItem.Id = items.Id;
+                        dataItem.Title = items.Title;
+                        dataItem.PC = items.PurposeOfConnection;
+                        dataItem.AO = items.AO.Title;
+                        dataItem.CT = items.ConnectsTo;
+
+                        arrayOfData.push(dataItem);
+                    }
+                    gridOptions.api.setRowData(arrayOfData);
+                })
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    alert("Unable to retrieve data. Please contact the KM SharePoint Team.");
+                })
+                .always(function (jqXHROrData, textStatus, jqXHROrErrorThrown) {
+                    // console.log("complete");
+                });
+        }
+
+    </script>
+</body>
