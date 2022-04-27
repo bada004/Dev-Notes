@@ -1,0 +1,122 @@
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+    <!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:_dlc_DocId msdt:dt="string">JFHQDODINID-1374311429-4</mso:_dlc_DocId>
+<mso:_dlc_DocIdItemGuid msdt:dt="string">4fdad4d2-4d20-43b8-9d0d-9dc9a2d5c79c</mso:_dlc_DocIdItemGuid>
+<mso:_dlc_DocIdUrl msdt:dt="string">https://intelshare.intelink.gov/sites/jfhq-dodin/BADSS/_layouts/15/DocIdRedir.aspx?ID=JFHQDODINID-1374311429-4, JFHQDODINID-1374311429-4</mso:_dlc_DocIdUrl>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+
+    <!-- Metas -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="keywords" content="HTML5 Template Coco onepage themeforest" />
+    <meta name="description" content="Coco - Onepage Multi-Purpose HTML5 Template" />
+    <meta name="author" content="" />
+
+    <link rel="shortcut icon" href="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/img/JFHQ-DODIN_seal_fullcolor_ICO_Type.ico">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900" rel="stylesheet">
+
+    <link href="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/Font%20Awesome/fontawesome-free-5.15.2-web/css/fontawesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/MDB-Free_4.13.0/css/mdb.min.css">
+    <link rel="stylesheet" href="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/MDB-Free_4.13.0/css/bootstrap.min.css">
+
+    <!-- Plugins -->
+    <link rel="stylesheet" href="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/css/plugins.css">
+
+    <!-- Core Style Css -->
+    <link rel="stylesheet" href="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/css/style.css">
+    <link rel="stylesheet" href="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/Font%20Awesome/fontawesome-free-5.15.2-web/css/all.min.css">
+
+    <title>Tab Title</title>
+
+</head>
+
+<body>
+    <!-- ========================================= Start Loading -->
+
+    <div class="loading">
+        <div class="text-center middle">
+            <div class="lds-ellipsis">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- End Loading =========================================== -->
+
+
+    <!-- ========================================= Start Navbar -->
+
+    <div id="navHeader"></div>
+
+    <!-- End Navbar =========================================== -->
+
+
+    <!-- ========================================= Start Header v1 -->
+
+    <div class="process section-padding bg-img bg-fixed pos-re text-center" style="height:100%" data-overlay-dark="7" data-background="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/img/img/bg2.jpg" data-scroll-index="2">
+        <div class="container">
+            <div class="row">
+
+                <div class="section-head offset-md-2 col-md-8 offset-lg-3 col-lg-6">
+                    <h4>Page Title</h4>
+                    <p>Description text. Description text. Description text. Description text. Description text. Description text. Description text. </p>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================= Start Footer -->
+    <div id="navFooter"></div>
+    <!-- End Footer =========================================== -->
+
+    <!-- jQuery -->
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/js/jquery-3.0.0.min.js"></script>
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/js/jquery-migrate-3.0.0.min.js"></script>
+
+    <!-- popper.min -->
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/js/popper.min.js"></script>
+
+    <!-- bootstrap -->
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/js/bootstrap.min.js"></script>
+
+    <!-- scrollIt -->
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/js/scrollIt.min.js"></script>
+
+    <!-- jquery.waypoints.min -->
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/js/jquery.waypoints.min.js"></script>
+
+    <!-- owl carousel -->
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/js/owl.carousel.min.js"></script>
+
+    <!-- jquery.magnific-popup js -->
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/js/jquery.magnific-popup.min.js"></script>
+
+    <!-- stellar js -->
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/js/jquery.stellar.min.js"></script>
+
+    <!-- isotope.pkgd.min js -->
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/js/isotope.pkgd.min.js"></script>
+
+    <!-- YouTubePopUp.jquery -->
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/js/YouTubePopUp.jquery.js"></script>
+
+    <!-- validator js -->
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/js/validator.js"></script>
+
+    <!-- custom scripts -->
+    <script src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/HomeAssets/js/HomeUpdateV3.js"></script>
+
+</body>
