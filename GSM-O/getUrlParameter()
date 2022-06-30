@@ -1,4 +1,10 @@
-// How to use it
+// Best version=============================================
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
+const accessPointId = urlParams.get('ID');
+=========================================================
+
+// Old Version===========================================
 var daoTitle = getUrlParameter('DAO');
 
 // Get the URL search Parameters
@@ -14,3 +20,4 @@ var getUrlParameter = function getUrlParameter(sParam) {
 		}
 	}
 };
+========================================================
