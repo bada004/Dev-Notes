@@ -1,1 +1,14 @@
-https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/css/MODIFIEDcorev15-51C31438.themedcss
+<link rel="stylesheet" href="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/css/MODIFIEDcorev15-51C31438.themedcss">
+<button type="button" class="btn btn-success" href="#" onclick="dialogPopUp('/sites/jfhq-dodin/J0/Lists/CAO/NewItem.aspx')">Submit New Request</button>
+
+
+<script type="text/javascript" src="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/SPDialog.js"></script>function dialogPopUp(url) {
+        var options = {
+            autosize: true,
+            showClose: true,
+            title: ' ',
+            url: url,
+        };
+        SP.SOD.execute('sp.ui.dialog.js', 'SP.UI.ModalDialog.showModalDialog', options);
+   }
+</script>
