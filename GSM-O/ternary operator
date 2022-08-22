@@ -1,0 +1,1 @@
+var variableName = dataItem[i].title ? dataItem[i].title : 'whatever you want the null string to show';
