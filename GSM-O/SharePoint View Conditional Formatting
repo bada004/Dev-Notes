@@ -1,0 +1,214 @@
+<%@ Page language="C#" MasterPageFile="~masterurl/default.master" Inherits="Microsoft.SharePoint.WebPartPages.WebPartPage,Microsoft.SharePoint,Version=16.0.0.0,Culture=neutral,PublicKeyToken=71e9bce111e9429c" %>
+  <%@ Register Tagprefix="SharePoint" Namespace="Microsoft.SharePoint.WebControls" Assembly="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+    <%@ Register Tagprefix="Utilities" Namespace="Microsoft.SharePoint.Utilities" Assembly="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+      <%@ Import Namespace="Microsoft.SharePoint" %>
+        <%@ Assembly Name="Microsoft.Web.CommandUI, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+          <%@ Register Tagprefix="WebPartPages" Namespace="Microsoft.SharePoint.WebPartPages" Assembly="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+            <%@ Register Tagprefix="ApplicationPages" Namespace="Microsoft.SharePoint.ApplicationPages.WebControls" Assembly="Microsoft.SharePoint, Version=16.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" %>
+              <asp:Content ContentPlaceHolderId="PlaceHolderPageTitle" runat="server">
+                <SharePoint:ListProperty Property="TitleOrFolder" runat="server" /> -
+                <SharePoint:ListProperty Property="CurrentViewTitle" runat="server" />
+              </asp:Content>
+              <asp:content contentplaceholderid="PlaceHolderAdditionalPageHead" runat="server">
+                <SharePoint:RssLink runat="server" />
+              </asp:content>
+              <asp:Content ContentPlaceHolderId="PlaceHolderPageImage" runat="server">
+                <SharePoint:ViewIcon Width="145" Height="54" runat="server" />
+              </asp:Content>
+              <asp:Content ContentPlaceHolderId="PlaceHolderLeftActions" runat="server">
+                <SharePoint:RecentChangesMenu runat="server" id="RecentChanges" />
+                <SharePoint:ModifySettingsLink runat="server" />
+              </asp:Content>
+              <asp:Content ContentPlaceHolderId="PlaceHolderBodyLeftBorder" runat="server">
+                <div height="100%" class="ms-pagemargin"><img src="/_layouts/15/images/blank.gif?rev=40" width='6' height='1' alt="" data-accessibility-nocheck="true" /></div>
+              </asp:Content>
+              <asp:Content ContentPlaceHolderId="PlaceHolderMain" runat="server">
+                <link rel="stylesheet" href="https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/css/removeSpLeftNav.css">
+                </link>
+                <script src="/sites/jfhq-dodin/SiteAssets/HomeAssets/js/jquery-3.0.0.min.js"></script>
+
+                <script type="text/javascript">
+
+                  (function () {
+                    'use strict';
+
+                    var CustomCtx = {};
+
+                    /**
+                     * Initialization
+                     */
+                    function init() {
+
+                      CustomCtx.Templates = {};
+
+                      CustomCtx.Templates.Fields = {
+                        'DecisionPoint': {
+                          'View': customDisplay
+                        },
+                        'CDR_x002F_DCDR_x0020_Involvement': {
+                          'View': customInvolvementDisplay
+                        },
+                        'USCYBERCOM': {
+                          'View': customCybercomDisplay
+                        },
+                        'Edit': {
+                          'View': customEditDisplay
+                        }
+                      };
+
+                      // Register the custom template
+                      SPClientTemplates.TemplateManager.RegisterTemplateOverrides(CustomCtx);
+                    }
+
+                    /**
+                     * Rendering template
+                     */
+                    function customDisplay(ctx) {
+                      var currentVal = '';
+                      //from the context get the current item and it's value 
+                      if (ctx != null && ctx.CurrentItem != null)
+                        console.log(ctx.CurrentItem);
+                      currentVal = ctx.CurrentItem[ctx.CurrentFieldSchema.Name];
+                      console.log(currentVal)
+                      var el = "<div></div>";
+                      if (currentVal != 'No' && currentVal != '') {
+                        el = "<div><i class='fas fa-star' style='color:#CC9A34'></i></div>";
+                      }
+
+                      var $f = $(el);
+                      // if (currentVal == "Yes") {
+                      //   $f.css('color', 'green');
+                      // }
+                      // else {
+                      //   $f.css('color', 'red');
+                      // }
+
+                      // Render the HTML5 file input in place of the OOTB
+                      return $f[0].outerHTML;
+                    }
+
+                    function customInvolvementDisplay(ctx) {
+                      var currentVal = '';
+                      //from the context get the current item and it's value 
+                      if (ctx != null && ctx.CurrentItem != null)
+                        console.log(ctx.CurrentItem);
+                      currentVal = ctx.CurrentItem[ctx.CurrentFieldSchema.Name];
+                      console.log(currentVal)
+                      var el = "<div></div>";
+                      if (currentVal == 'CDR') {
+                        el = "<div><span class='badge rounded-pill badge-light' style='background-color:#00CCFF'>" + currentVal + "</span></div>";
+                      } else if (currentVal == 'DCDR') {
+                        el = "<div><span class='badge rounded-pill badge-light' style='background-color:#2F75B5'>" + currentVal + "</span></div>";
+                      } else if (currentVal == 'EXDIR') {
+                        el = "<div><span class='badge rounded-pill badge-light' style='background-color:#FF9900'>" + currentVal + "</span></div>";
+                      }
+
+                      var $f = $(el);
+                      // if (currentVal == "Yes") {
+                      //   $f.css('color', 'green');
+                      // }
+                      // else {
+                      //   $f.css('color', 'red');
+                      // }
+
+                      // Render the HTML5 file input in place of the OOTB
+                      return $f[0].outerHTML;
+                    }
+
+                    function customCybercomDisplay(ctx) {
+                      var currentVal = '';
+                      //from the context get the current item and it's value 
+                      if (ctx != null && ctx.CurrentItem != null)
+                        currentVal = ctx.CurrentItem[ctx.CurrentFieldSchema.Name];
+                      var el = "<div></div>";
+                      if (currentVal == 'Yes') {
+                        el = "<div><img style='text-align:center;height:18px;width:18px;' src='https://intelshare.intelink.gov/sites/jfhq-dodin/SiteAssets/uscybercom_seal.png' alt='CYBERCOM logo'></div>";
+                      }
+
+                      var $f = $(el);
+                      // if (currentVal == "Yes") {
+                      //   $f.css('color', 'green');
+                      // }
+                      // else {
+                      //   $f.css('color', 'red');
+                      // }
+
+                      // Render the HTML5 file input in place of the OOTB
+                      return $f[0].outerHTML;
+                    }
+                    function customEditDisplay(ctx) {
+                      var currentVal = '';
+                      //from the context get the current item and it's value 
+                      if (ctx != null && ctx.CurrentItem != null)
+                        currentVal = ctx.CurrentItem[ctx.CurrentFieldSchema.Name];
+                      console.log(ctx.CurrentItem.ID);
+                      var el = "<div><a href='https://intelshare.intelink.gov/sites/jfhq-dodin/Lists/StrategicCalendar/EngagementTrackerEdit.aspx?ID=" + ctx.CurrentItem.ID + "&Source=https://intelshare.intelink.gov/sites/jfhq-dodin/Lists/StrategicCalendar/Engagement%20Tracker.aspx'><i class='fas fa-edit' style='color:#444444'></i></div>"
+
+                      var $f = $(el);
+                      // Render the HTML5 file input in place of the OOTB
+                      return $f[0].outerHTML;
+                    }
+                    // Run our intiialization
+                    init();
+
+                  })();
+
+
+
+                  // $(function () {
+
+                  //   $(".ms-tl-mainArea .ms-tl-barTitle").each(function () {
+                  //     console.log('hit')
+                  //     var taskStatus = getTaskStatus($(this).text());
+                  //     console.log(taskStatus)
+                  //     if (taskStatus == "No") {
+                  //       $(this).parent().css("background-color", "red");
+                  //     }
+                  //     if (taskStatus == "Yes") {
+                  //       $(this).parent().css("background-color", "green");
+                  //     }
+                  //     if (taskStatus == "") {
+                  //       $(this).parent().css("background-color", "blue");
+                  //     }
+                  //   });
+
+                  // });
+
+                  // //get task status by task name
+                  // function getTaskStatus(taskname) {
+                  //   console.log('hit 2')
+                  //   var status = "";
+                  //   var nameIndex = 0;
+                  //   var statusIndex = 0;
+
+                  //   //get Task Name column index and Task Status column index
+                  //   $(".ms-listviewtable tr th").each(function (i) {
+                  //     if ($(this).find("a").text() == "ID") {
+                  //       nameIndex = i;
+                  //     }
+                  //     if ($(this).find("a").text() == "DecisionPoint") {
+                  //       statusIndex = i;
+                  //     }
+                  //   });
+
+                  //   $(".ms-listviewtable tr").each(function (i) {
+                  //     if (i > 0) {
+                  //       var name = $(this).children("td").eq(nameIndex).text();
+                  //       if (name == taskname) {
+                  //         status = $(this).children("td").eq(statusIndex).text();
+                  //       }
+                  //     }
+                  //   });
+                  //   return status;
+                  // }
+                </script>
+
+                <WebPartPages:WebPartZone runat="server" FrameType="None" ID="Main" Title="loc:Main" />
+              </asp:Content>
+              <asp:Content ContentPlaceHolderId="PlaceHolderPageDescription" runat="server">
+                <SharePoint:ListProperty CssClass="ms-listdescription" Property="Description" runat="server" />
+              </asp:Content>
+              <asp:Content ContentPlaceHolderId="PlaceHolderCalendarNavigator" runat="server">
+                <SharePoint:SPCalendarNavigator id="CalendarNavigatorId" runat="server" />
+                <ApplicationPages:CalendarAggregationPanel id="AggregationPanel" runat="server" />
+              </asp:Content>
