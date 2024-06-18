@@ -1,0 +1,19 @@
+ var currentUser = '';
+            function getCurrentUser() {
+                var context = new SP.ClientContext.get_current();
+                var web = context.get_web();
+                currentUser = web.get_currentUser();
+                context.load(currentUser);
+                context.executeQueryAsync(ongetCurrentUserSuccess, ongetCurrentUserFail);
+            }
+
+            function ongetCurrentUserSuccess(sender, args) {
+                var acountname = currentUser.get_title(); // extract the login name from the account name
+                console.log(acountname)
+                currentUser = acountname;
+                // var username = currentUser.get_title(); 
+            }
+
+            function ongetCurrentUserFail(sender, args) {
+                alert('Failed to get current user' + args.get_message());
+            }
