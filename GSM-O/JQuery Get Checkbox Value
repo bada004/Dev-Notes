@@ -1,1 +1,0 @@
-$("#poamGoFoSig").is(':checked'); // Should return true or false

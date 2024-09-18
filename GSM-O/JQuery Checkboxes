@@ -1,0 +1,8 @@
+// Get Value
+$("#poamGoFoSig").is(':checked'); // Should return true or false
+
+// Add Check
+$("#poamGoFoSig").prop('checked','checked')
+
+// Remove Check
+$('#poamGoFoSig').prop({checked:false});
